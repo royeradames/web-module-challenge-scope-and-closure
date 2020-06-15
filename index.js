@@ -77,48 +77,50 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(myInning, numOfInnings){
-  const game = {home : 0, away: 0};
 
-  for(let i= 0; i < numOfInnings; i++){
-    let whoScore =myInning();
-    let scoreMany = myInning();
+// function finalScore(myInning, numOfInnings){
+//   const game = { home: 0, away: 0 };
+
+//   for (let i = 0; i < numOfInnings; i++) {
+//     let whoScore = myInning();
+//     let scoreMany = myInning();
     
-    // homescores
-    if(whoScore === 0){
-      myInning.home += 1;
-      
-      // multiple scores in a inning
-      if(scoreMany === 2){
-        myInning.home += 1;
-        while(scoreMany ===2){
-          scoreMany = myInning();
-          myInning.home += 1;
-        }
+//     // homescores
+//     if (whoScore === 0) {
+//       game.home += 1;
 
-      }
-      
-    } else if(whoScore === 1) {
-      // Away scores
-      myInning.away += 1;
-      
-      // multiple scores in a inning
-      if(scoreMany === 2){
-        myInning.away += 1;
-        while(scoreMany ===2){
-          scoreMany = myInning();
-          myInning.away += 1;
-        }
-    }
+//       // multiple scores in a inning
+//       if (scoreMany === 2 || scoreMany === 0) {
+//         while (scoreMany === 2 || scoreMany === 0) {
+//           game.home += 1;
+//           scoreMany = myInning();
+//           debugger;
+//         }
 
-  }
+//       }
 
-  return game;
+//     } else if (whoScore === 1) {// Away scores
+//       game.away += 1;
 
-}
-}
+//       // multiple scores in a inning
+//       if (scoreMany === 2 || scoreMany === 1) {
+//         while (scoreMany === 2 || scoreMany === 1) {
+//           game.away += 1;
+//           scoreMany = myInning();
+//           debugger;
+//         }
+//       }
 
-console.log(finalScore(inning, 9));
+//     }
+
+//   }
+//   return game;
+// }
+
+// console.log(finalScore(inning, 9));
+
+
+
 
 /* Task 4: 
 
@@ -127,7 +129,7 @@ Create a function called `scoreboard` that accepts the following parameters:
 (1) Callback function `inning` that you wrote above
 (2) A number of innings
 
-and returns the score at each pont in the game, like so:
+and returns the score at each point in the game, like so:
 
 1st inning: 0 - 2
 2nd inning: 1 - 3
@@ -141,8 +143,61 @@ and returns the score at each pont in the game, like so:
 
 Final Score: 6 - 10 */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(myInning, numOfInnings) {
+  let currentInning = 0;
+  let home = 0;
+  let away = 0;
+  return function game() {
+    currentInning++;
+    let whoScore = myInning();
+    let scoreMany = myInning();
+    const homeScores = 0;
+    const awayScores = 1;
+    const multipleScores = 2;
+
+    
+    if (homeScores === whoScore) {
+      home += 1;
+
+      // multiple scores in a inning
+      if (scoreMany === 2) {
+        while (multipleScores === scoreMany) {
+          home += 1;
+          scoreMany = myInning();
+        }
+
+      }
+
+    } else if (awayScores === whoScore) {
+      away += 1;
+
+      // multiple scores in a inning
+      if (scoreMany === 2) {
+        while (multipleScores === scoreMany) {
+          away += 1;
+          scoreMany = myInning();
+        }
+      }
+
+    }
+
+
+
+
+    if (numOfInnings === currentInning) {
+      return `${currentInning}st inning: ${home} - ${away} \b Final score: ${home} - ${away}`;
+
+    } else {
+      return `${currentInning}st inning: ${home} - ${away}`;
+
+    }
+  }
 }
 
-
+const baltimoreVsCleveland = scoreboard(inning, 9);
+for( let i = 0; i < 9; i++){
+  
+  
+  console.log(baltimoreVsCleveland());
+  
+}
