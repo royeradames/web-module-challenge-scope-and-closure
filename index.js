@@ -185,7 +185,7 @@ function scoreboard(myInning, numOfInnings) {
 
 
     if (numOfInnings === currentInning) {
-      return `${currentInning}st inning: ${home} - ${away} \b Final score: ${home} - ${away}`;
+      return `${currentInning}st inning: ${home} - ${away} \n Final score: ${home} - ${away}`;
 
     } else {
       return `${currentInning}st inning: ${home} - ${away}`;
