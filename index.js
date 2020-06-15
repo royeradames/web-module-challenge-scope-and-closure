@@ -25,13 +25,14 @@ function processFirstItem(stringList, callback) {
 
 /* Task 1: `counterMaker`
  * Study the code for counter1 and counter2. Answer the questions below.
- * 
  * 1. What is the difference between counter1 and counter2?
+ * counter1 is a private variable while counter2 is coping upto accesscount variable.
  * 
  * 2. Which of the two uses a closure? How can you tell?
- * 
+ * counter1. Because counter() is using the parent variable count of counterMaker() 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
- *
+ *counter1, for keeping track off count with every call of the only private variable
+ *counter2, when you want to have direct access to the count variable
 */
 
 // counter1 code
@@ -56,9 +57,9 @@ function counter2() {
 
 Write a function called `inning` that generates a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(/*Code Here*/){
+function inning(){
 
-    /*Code Here*/
+  return Math.floor(Math.random() * Math.floor(2));
 
 }
 
@@ -76,11 +77,48 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(/*code Here*/){
+function finalScore(myInning, numOfInnings){
+  const game = {home : 0, away: 0};
 
-  /*Code Here*/
+  for(let i= 0; i < numOfInnings; i++){
+    let whoScore =myInning();
+    let scoreMany = myInning();
+    
+    // homescores
+    if(whoScore === 0){
+      myInning.home += 1;
+      
+      // multiple scores in a inning
+      if(scoreMany === 2){
+        myInning.home += 1;
+        while(scoreMany ===2){
+          scoreMany = myInning();
+          myInning.home += 1;
+        }
+
+      }
+      
+    } else if(whoScore === 1) {
+      // Away scores
+      myInning.away += 1;
+      
+      // multiple scores in a inning
+      if(scoreMany === 2){
+        myInning.away += 1;
+        while(scoreMany ===2){
+          scoreMany = myInning();
+          myInning.away += 1;
+        }
+    }
+
+  }
+
+  return game;
 
 }
+}
+
+console.log(finalScore(inning, 9));
 
 /* Task 4: 
 
