@@ -42,6 +42,7 @@ Find the file `index.js` and complete the tasks.
 Edit the `ReadMe` file with your answers.
 
 1. In your own words, define closure (1-2 sentences).
+using inheritance like on CSS but for functions and variables.
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -63,9 +64,11 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+the return fuction console logging the name variable. I can tell because the name variable is being inheritage from the personalDice. The return variable does not have a variable called name.
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
+The variable and the pattern is being printed. The variables can change and so the meaning.
 c. What is the lexical scope of `newRoll`? 
-
+return function
 ### Task 2c - Exit Ticket
 
 Once you begin, you will have 15 minutes to answer the questions [here](https://app.codesignal.com/public-test/WjSzNh9gDrD8Xn8hw/enY3yPRP3nEm7E).
