@@ -94,7 +94,7 @@ finalScore(inning, 9) might return:
 //         while (scoreMany === 2 || scoreMany === 0) {
 //           game.home += 1;
 //           scoreMany = myInning();
-//           debugger;
+//           // debugger;
 //         }
 
 //       }
@@ -107,7 +107,7 @@ finalScore(inning, 9) might return:
 //         while (scoreMany === 2 || scoreMany === 1) {
 //           game.away += 1;
 //           scoreMany = myInning();
-//           debugger;
+//           // debugger;
 //         }
 //       }
 
@@ -147,7 +147,11 @@ function scoreboard(myInning, numOfInnings) {
   let currentInning = 0;
   let home = 0;
   let away = 0;
+  // const currentGame = {home: 0, away: 0};
   return function game() {
+    // console.log(currentGame.home);
+    // console.log(currentGame.away);
+    
     currentInning++;
     let whoScore = myInning();
     let scoreMany = myInning();
